@@ -3,7 +3,7 @@
 
 #ifdef AUDIO_OAL
 
-#ifndef __SWITCH__ // oal switch port doesn't need this apparently
+#if !defined(__SWITCH__) && !defined(PSP2) // oal switch port doesn't need this apparently
 LPALGENEFFECTS alGenEffects;
 LPALDELETEEFFECTS alDeleteEffects;
 LPALISEFFECT alIsEffect;

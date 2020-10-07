@@ -821,7 +821,7 @@ PadHandler(RsEvent event, void *param)
 RwBool
 AttachInputDevices(void)
 {
-	#ifndef __SWITCH__
+	#if !defined(__SWITCH__) && !defined(PSP2)
 	RsInputDeviceAttach(rsKEYBOARD, KeyboardHandler);
 	#endif
 

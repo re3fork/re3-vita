@@ -71,7 +71,7 @@ DWORD _dwOperatingSystemVersion;
 #include "resource.h"
 #else
 long _dwOperatingSystemVersion;
-#ifndef __SWITCH__ // missing in switch devkit
+#if !defined(__SWITCH__) && !defined(PSP2)
 #include <sys/sysinfo.h>
 #endif
 #include <stddef.h>
@@ -438,7 +438,7 @@ psInitialize(void)
 
 #endif
 
-#ifndef __SWITCH__
+#if !defined(__SWITCH__) && !defined(PSP2)
 	struct sysinfo systemInfo;
 	sysinfo(&systemInfo);
 	
@@ -713,25 +713,13 @@ psSelectDevice()
 		   FrontEndMenuManager.m_nPrefsHeight == 0 ||
 		   FrontEndMenuManager.m_nPrefsDepth == 0){
 			// Defaults if nothing specified
-			#ifndef __SWITCH__
+			#if !defined(PSP2)
 			const GLFWvidmode *mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 			FrontEndMenuManager.m_nPrefsWidth = mode->width;
 			FrontEndMenuManager.m_nPrefsHeight = mode->height;
 			#else
-			switch(appletGetOperationMode()){
-				default:
-				case AppletOperationMode_Handheld: {
-					FrontEndMenuManager.m_nPrefsWidth = 1280;
-					FrontEndMenuManager.m_nPrefsHeight = 720;
-					break;
-				}
-
-				case AppletOperationMode_Docked: {
-					FrontEndMenuManager.m_nPrefsWidth = 1920;
-					FrontEndMenuManager.m_nPrefsHeight = 1080;
-					break;
-				}
-			}
+			FrontEndMenuManager.m_nPrefsWidth = 960;
+			FrontEndMenuManager.m_nPrefsHeight = 544;
 			#endif
 			FrontEndMenuManager.m_nPrefsDepth = 32;
 			FrontEndMenuManager.m_nPrefsWindowed = 0;
@@ -1445,7 +1433,7 @@ main(int argc, char *argv[])
 	RwV2d pos;
 	RwInt32 i;
 
-#if !defined(_WIN32) && !defined(__SWITCH__)
+#if !defined(_WIN32) && !defined(__SWITCH__) && !defined(PSP2)
 	struct sigaction act;
 	act.sa_sigaction = terminateHandler;
 	act.sa_flags = SA_SIGINFO;

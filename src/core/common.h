@@ -27,6 +27,9 @@
 #if defined __SWITCH__
 #include <switch.h>
 #include "switch_compat.h"
+#elif defined PSP2
+#include <vitasdk.h>
+#include "psp2_compat.h"
 #endif
 
 #include <rwcore.h>

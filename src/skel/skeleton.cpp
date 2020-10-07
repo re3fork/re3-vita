@@ -106,7 +106,7 @@ RsInputDeviceAttach(RsInputDeviceType inputDevice,
 {
 	switch (inputDevice)
 	{
-		#ifndef __SWITCH__
+		#if !defined(__SWITCH__) && !defined(PSP2)
 		case rsKEYBOARD:
 			{
 				RsGlobal.keyboard.inputEventHandler = inputEventHandler;

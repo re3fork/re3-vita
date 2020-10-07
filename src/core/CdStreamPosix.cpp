@@ -1,3 +1,5 @@
+#define PATH_MAX 512
+
 #ifndef _WIN32
 #include "common.h"
 #include "crossplatform.h"
@@ -7,12 +9,12 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <sys/time.h>
-#include <sys/statvfs.h>
+//#include <sys/statvfs.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <sys/resource.h>
-#ifndef __SWITCH__
+#if !defined(__SWITCH__) && !defined(PSP2)
 #include <sys/syscall.h>
 #else
 // no signals in switch
@@ -147,14 +149,14 @@ CdStreamInitThread(void)
 void
 CdStreamInit(int32 numChannels)
 {
-    struct statvfs fsInfo;
+    /*struct statvfs fsInfo;
 
     if((statvfs("models/gta3.img", &fsInfo)) < 0)
     {
         CDTRACE("can't get filesystem info");
         ASSERT(0);
         return;
-    }
+    }*/
 #ifdef __linux__
 	_gdwCdStreamFlags = O_RDONLY | O_NOATIME;
 #else
@@ -168,7 +170,7 @@ CdStreamInit(int32 numChannels)
 		debug("Using no buffered loading for streaming\n");
 	}
 */
-	void *pBuffer = (void *)RwMallocAlign(CDSTREAM_SECTOR_SIZE, fsInfo.f_bsize);
+	void *pBuffer = (void *)RwMallocAlign(CDSTREAM_SECTOR_SIZE, /*fsInfo.f_bsize*/CDSTREAM_SECTOR_SIZE);
 	ASSERT( pBuffer != nil );
 
 	gNumImages = 0;

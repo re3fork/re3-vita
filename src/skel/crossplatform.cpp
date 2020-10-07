@@ -152,7 +152,7 @@ char* casepath(char const* path, bool checkPathFirst)
 
     char* c;
     
-    #ifdef __SWITCH__
+    #if defined(__SWITCH__) || defined(PSP2)
     if( (c = strstr(p, ":/")) != NULL) // support for switch mounted device names
     {
         size_t deviceNameOffset = c - p + 3;
