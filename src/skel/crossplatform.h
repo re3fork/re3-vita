@@ -51,7 +51,6 @@ FILE *_fcaseopen(char const *filename, char const *mode);
 #ifdef RW_GL3
 typedef struct
 {
-    GLFWwindow* window;
     RwBool		fullScreen;
     RwV2d		lastMousePos;
     double      mouseWheel; // glfw doesn't cache it

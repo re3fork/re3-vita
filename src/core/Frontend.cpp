@@ -554,7 +554,7 @@ CMenuManager::CentreMousePointer()
 		ClientToScreen(PSGLOBAL(window), &Point);
 		SetCursorPos(Point.x, Point.y);
 #elif defined RW_GL3
-		glfwSetCursorPos(PSGLOBAL(window), SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+		//glfwSetCursorPos(PSGLOBAL(window), SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 #endif
 
 		PSGLOBAL(lastMousePos.x) = SCREEN_WIDTH / 2;
@@ -3934,11 +3934,11 @@ CMenuManager::ProcessButtonPresses(void)
 #ifdef USE_DEBUG_SCRIPT_LOADER
 	if (m_nCurrScreen == MENUPAGE_START_MENU || m_nCurrScreen == MENUPAGE_NEW_GAME || m_nCurrScreen == MENUPAGE_NEW_GAME_RELOAD) {
 #ifdef RW_GL3
-		if (glfwGetKey(PSGLOBAL(window), GLFW_KEY_R) == GLFW_PRESS) {
+		/*if (glfwGetKey(PSGLOBAL(window), GLFW_KEY_R) == GLFW_PRESS) {
 			scriptToLoad = 1;
 			DoSettingsBeforeStartingAGame();
 			return;
-		}
+		}*/
 #elif defined _WIN32
 		if (GetAsyncKeyState('R') & 0x8000) {
 			scriptToLoad = 1;
@@ -5009,11 +5009,11 @@ CMenuManager::ProcessButtonPresses(void)
 							ControlsManager.InitDefaultControlConfigJoyPad(devCaps.dwButtons);
 						}
 #else
-						if (PSGLOBAL(joy1id) != -1 && glfwJoystickPresent(PSGLOBAL(joy1id))) {
+						/*if (PSGLOBAL(joy1id) != -1 && glfwJoystickPresent(PSGLOBAL(joy1id))) {
 							int count;
 							glfwGetJoystickButtons(PSGLOBAL(joy1id), &count);
 							ControlsManager.InitDefaultControlConfigJoyPad(count);
-						}
+						}*/
 #endif
 						m_ControlMethod = CONTROL_STANDARD;
 						MousePointerStateHelper.bInvertVertically = false;
