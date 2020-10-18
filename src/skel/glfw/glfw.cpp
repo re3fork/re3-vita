@@ -176,10 +176,10 @@ psCameraBeginUpdate(RwCamera *camera)
 void
 psCameraShowRaster(RwCamera *camera)
 {
-	// if (CMenuManager::m_PrefsVsync)
-		// RwCameraShowRaster(camera, PSGLOBAL(window), rwRASTERFLIPWAITVSYNC);
-	// else
-		// RwCameraShowRaster(camera, PSGLOBAL(window), rwRASTERFLIPDONTWAIT);
+	 if (CMenuManager::m_PrefsVsync)
+		RwCameraShowRaster(camera, nullptr, rwRASTERFLIPWAITVSYNC);
+	 else
+		RwCameraShowRaster(camera, nullptr, rwRASTERFLIPDONTWAIT);
 
 	return;
 }
