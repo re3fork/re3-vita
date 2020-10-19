@@ -1456,6 +1456,10 @@ WinMain(HINSTANCE instance,
 int
 main(int argc, char *argv[])
 {
+	scePowerSetArmClockFrequency(444);
+	scePowerSetBusClockFrequency(222);
+	scePowerSetGpuClockFrequency(222);
+	scePowerSetGpuXbarClockFrequency(166);
 #endif
 #ifdef __SWITCH__
 	#if DEBUG
