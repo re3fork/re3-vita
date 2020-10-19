@@ -19,7 +19,7 @@
 
 #define PATH_MAX 1024
 
-int printf( const char * format, ... ) {
+/*int printf( const char * format, ... ) {
   va_list list;
   char string[512];
 
@@ -34,7 +34,7 @@ int printf( const char * format, ... ) {
   }
 
   return 0;
-}
+}*/
 
 /* Taken from glibc */
 char *realpath(const char *name, char *resolved)
