@@ -121,7 +121,7 @@ int32 CMenuManager::m_PrefsMusicVolume = 102;
 int32 CMenuManager::m_PrefsSfxVolume = 102;
 
 #ifdef CUTSCENE_BORDERS_SWITCH
-#if defined(__SWITCH__) || defined(PSP2)
+#if defined(__SWITCH__)
 bool CMenuManager::m_PrefsCutsceneBorders = false;
 #else
 bool CMenuManager::m_PrefsCutsceneBorders = true;
