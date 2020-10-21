@@ -30,6 +30,8 @@
 
 // #define ONE_THREAD_PER_CHANNEL // Don't use if you're not on SSD/Flash. (Also you may want to benefit from this via using all channels in Streaming.cpp)
 
+#define ONE_THREAD_PER_CHANNEL
+
 bool flushStream[MAX_CDCHANNELS];
 
 struct CdReadInfo
@@ -443,7 +445,7 @@ void *CdStreamThread(void *param)
 
 		pChannel->nSectorsToRead = 0;
 
-		if ( pChannel->bLocked && gCdStreamThreadStatus != 2)
+		if ( pChannel->bLocked /*&& gCdStreamThreadStatus != 2*/)
 		{
 			sem_post(&pChannel->pDoneSemaphore);
 		}
